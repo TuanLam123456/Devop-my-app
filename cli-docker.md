@@ -77,3 +77,6 @@ docker network connect [NETWORK_NAME/ID] [CONTAINER_NAME/ID]
 docker run --network [NETWORK_NAME/ID] --name CONTAINER_NAME -d -p 3000:3000 ten_image
 docker network disconnect [NETWORK_NAME/ID] [CONTAINER_NAME/ID]
 ```
+
+# VOLUME
+
