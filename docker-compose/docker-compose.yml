@@ -1,5 +1,5 @@
 services:
-  # docker run --name database -d -v postgres_data_volume:/var/lib/postgresql -e POSTGRES_PASSWORD=12345 -p 5432:5432 postgres:18
+# docker run --name database -d -v postgres_data_volume:/var/lib/postgresql -e POSTGRES_PASSWORD=12345 -p 5432:5432 postgres:18
   database:
     image: postgres:18
     container_name: database
@@ -10,7 +10,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=12345
 
-  # docker run --name go_gin_be_container -d -p 8002:8080 --env-file=.env go_gin_be_image
+# docker run --name go_gin_be_container -d -p 8002:8080 --env-file=.env go_gin_be_image
   go_gin_be:
     image: go_gin_be_image
     container_name: go_gin_be
@@ -21,7 +21,7 @@ services:
     depends_on:
       - database
 
-  # docker run --name java_be_container -d -p 8003:8080 --env-file=.env java_be_image
+# docker run --name java_be_container -d -p 8003:8080 --env-file=.env java_be_image
   java_be:
     image: java_be_image
     container_name: java_be
@@ -42,6 +42,38 @@ services:
       - ../js_nestjs/.env
     depends_on:
       - database
+  
+# docker run --name csharp_be_container -d -p 8001:8080 --env-file=.env csharp_be_image
+  csharp_be:
+    image: csharp_be_image
+    container_name: csharp_be
+    ports:
+      - 8005:3000
+    env_file:
+      - ../csharp_be/.env
+    depends_on:
+      - database
+
+# docker run --name my-app-container -d -p 12345:3000 --network demo_network tuanlam141000/my-app-image
+  js_nextjs:
+    image: tuanlam141000/my-app-image
+    container_name: js_nextjs
+    ports:
+      - 3001:3000   
+  
+  # docker run --name html_container -d -p 3000:80 html_image
+  html:
+    image: html_image
+    container_name: html
+    ports: 
+      - 3002:80
+
+  # docker run --name js_react_vite_container -d -p 3001:80 js_react_vite_image
+  js_react_vite:
+    image: js_react_vite_image
+    container_name: js_react_vite
+    ports:
+      - 3003:80
 
 volumes:
   postgres-data:
