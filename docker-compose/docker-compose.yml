@@ -1,12 +1,12 @@
 services:
 # docker run --name database -d -v postgres_data_volume:/var/lib/postgresql -e POSTGRES_PASSWORD=12345 -p 5432:5432 postgres:18
   database:
-    image: postgres:18
+    image: postgres:16
     container_name: database
     ports:
       - 5433:5432
     volumes:
-      - ./postgres_data:/var/lib/postgresql
+      - ./postgres_data:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=12345
 
@@ -68,7 +68,7 @@ services:
 
 # docker run --name my-app-container -d -p 12345:3000 --network demo_network tuanlam141000/my-app-image
   js_nextjs:
-    image: tuanlam141000/my-app-image
+    image: lam141000/my-app-image:latest
     container_name: js_nextjs
     ports:
       - 3001:3000   
@@ -90,7 +90,7 @@ services:
       dockerfile: Dockerfile
     image: js_react_vite_image
     container_name: js_react_vite
-    ports:
+    ports: 
       - 3003:80
 
 # volumes:
