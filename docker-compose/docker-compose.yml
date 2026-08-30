@@ -68,7 +68,7 @@ services:
 
 # docker run --name my-app-container -d -p 12345:3000 --network demo_network tuanlam141000/my-app-image
   js_nextjs:
-    image: lam141000/my-app-image:latest
+    image: tuanlam141000/my-app-image:latest
     container_name: js_nextjs
     ports:
       - 3001:3000   
