@@ -128,6 +128,8 @@ docker run --name sqlserver -d -v sqlserver_data_volume:/var/opt/mssql -e ACCEPT
 
 tạo nháp dữ liệu cho db postgres
 ```bash
+docker exec -it [CONTAINER_NAME/ID] bash
+
 psql -U postgres
 
 # show database
