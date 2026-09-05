@@ -6,11 +6,14 @@ WORKDIR /app
 COPY .mvn .mvn
 COPY mvnw .
 COPY pom.xml .
+
+# Cấp quyền thực thi cho maven wrapper ngay trong container
+RUN chmod +x mvnw
+
 RUN ./mvnw dependency:go-offline
 
 # build
 COPY . .
-# /app/target/*.jar
 RUN ./mvnw package -DskipTests
 
 FROM eclipse-temurin:25-jre-alpine
