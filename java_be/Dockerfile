@@ -8,6 +8,7 @@ COPY mvnw .
 COPY pom.xml .
 
 # Cấp quyền thực thi cho maven wrapper ngay trong container
+RUN chmod +x mvnw
 
 RUN ./mvnw dependency:go-offline
 
